@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rebeccapurple;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+textarea {
+    font-size: 25px;
+}
+
+button {
+    margin: 1rem;
+    font-size: 25px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    background-color: rgb(185, 145, 224);
+}
+
+button:hover {
+    transform: scale(.98);
+}
