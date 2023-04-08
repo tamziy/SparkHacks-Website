@@ -17,8 +17,6 @@ for (let i = 0; i < h1.textContent.length; i++) {
 
 h1.innerHTML = colored_letters
 
-const heart = document.querySelector(".fa-heart")
-
 if (notes) {
     notes.forEach(note => {
         addNewNote(note)
@@ -35,9 +33,9 @@ function addNewNote(text = '') {
 
     note.innerHTML = `
         <div class="tools">
-            <button class = "liked"><i class = "far fa-heart"></i></button>
             <button class = "edit"><i class="fas fa-edit"></i></button>
             <button class="delete"><i class="fas fa-trash-alt"></i></button>
+            <button class = "like"><i class = "fas fa-heart"></i></button>
         </div>
         <div class="main ${text ? "" : "hidden"}"></div>
         <textarea class = "${text ? "hidden" : ""}"></textarea>
@@ -51,6 +49,7 @@ function addNewNote(text = '') {
 
     textArea.value = text;
     main.innerHTML = marked.parse(text);
+
 
     editBtn.addEventListener("click", () => {
         main.classList.toggle("hidden");
@@ -71,9 +70,16 @@ function addNewNote(text = '') {
         updateLocalStorage();
     })
 
+    const likeBtn = note.querySelector(".like");
+    let isLiked = false;
+
+    likeBtn.addEventListener("click", () => {
+        isLiked = !isLiked;
+        likeBtn.classList.toggle("liked");
+        updateLocalStorage()
+    })
 
     document.body.appendChild(note);
-
     
 };
 
@@ -88,25 +94,3 @@ function updateLocalStorage() {
 
     localStorage.setItem('notes', JSON.stringify(notes));
 }
-
-
-const createHeart = (e) => {
-    const heart = document.createElement("i");
-    heart.classList.add("fas");
-    heart.classList.add("fa-heart");
-
-    const x = e.clientX;
-    const y = e.clientY;
-
-    const leftOffset = e.target.offsetLeft;
-    const topOffset = e.target.offsetTop;   
-    const xInside = x - leftOffset;
-    const yInside = y - topOffset;  
-    heart.style.top = `${yInside}px`;
-    heart.style.left = `${xInside}px`;  
-    console.log(leftOffset, topOffset); 
-    image.appendChild(heart);   
-    times.innerHTML = ++timesClicked;
-
-    setTimeout(() => heart.remove(), 1000);
-};
