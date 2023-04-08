@@ -83,6 +83,9 @@ function addNewNote(text = '') {
     
 };
 
+addNewNote(text = 'Have a great day today!')
+addNewNote(text = 'Good luck on your SparkHacks Project!')
+
 function updateLocalStorage() {
     const notesText = document.querySelectorAll("textarea");
 
