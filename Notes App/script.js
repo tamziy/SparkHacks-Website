@@ -2,6 +2,23 @@ const addBtn = document.querySelector(".add");
 
 const notes = JSON.parse(localStorage.getItem('notes'));
 
+const h1 = document.getElementById("h1")
+
+let colored_letters = "";
+
+for (let i = 0; i < h1.textContent.length; i++) {
+    if (i % 2 === 0) {
+        colored_letters += "<span class = 'red'>" + h1.textContent.charAt(i)
+    }
+    else {
+        colored_letters += "<span class = 'blue'>" + h1.textContent.charAt(i)
+    }
+}
+
+h1.innerHTML = colored_letters
+
+const heart = document.querySelector(".fa-heart")
+
 if (notes) {
     notes.forEach(note => {
         addNewNote(note)
@@ -18,6 +35,7 @@ function addNewNote(text = '') {
 
     note.innerHTML = `
         <div class="tools">
+            <button class = "liked"><i class = "far fa-heart"></i></button>
             <button class = "edit"><i class="fas fa-edit"></i></button>
             <button class="delete"><i class="fas fa-trash-alt"></i></button>
         </div>
@@ -53,6 +71,7 @@ function addNewNote(text = '') {
         updateLocalStorage();
     })
 
+
     document.body.appendChild(note);
 
     
@@ -69,3 +88,25 @@ function updateLocalStorage() {
 
     localStorage.setItem('notes', JSON.stringify(notes));
 }
+
+
+const createHeart = (e) => {
+    const heart = document.createElement("i");
+    heart.classList.add("fas");
+    heart.classList.add("fa-heart");
+
+    const x = e.clientX;
+    const y = e.clientY;
+
+    const leftOffset = e.target.offsetLeft;
+    const topOffset = e.target.offsetTop;   
+    const xInside = x - leftOffset;
+    const yInside = y - topOffset;  
+    heart.style.top = `${yInside}px`;
+    heart.style.left = `${xInside}px`;  
+    console.log(leftOffset, topOffset); 
+    image.appendChild(heart);   
+    times.innerHTML = ++timesClicked;
+
+    setTimeout(() => heart.remove(), 1000);
+};
