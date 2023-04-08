@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(82, 193, 230);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+p {
+
+}
+
+.add {
+    background-color: rgb(42, 232, 42);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: .5rem 1rem;
+    position: fixed;
+    top: 20px;
+    cursor: pointer;
+    right: 20px;
+
+}
+
+.note {
+    margin: 40px;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.tools {
+    background-color: rgb(42, 232, 42);
+    padding: .5rem;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.tools button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+textarea {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
